@@ -1,0 +1,896 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mon Dashboard</title>
+
+    <!-- Bootstrap + Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- SweetAlert2 -->
+    <link
+      rel="stylesheet"
+      href="{% static 'sweetalert2/dist/sweetalert2.min.css' %}"
+    />
+    <script src="{% static 'sweetalert2/dist/sweetalert2.min.js' %}"></script>
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="{% static 'static/favicons/apple-icon-57x57.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="{% static 'static/favicons/apple-icon-57x57.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="{% static 'static/favicons/apple-icon-60x60.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="{% static 'static/favicons/apple-icon-72x72.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="{% static 'static/favicons/apple-icon-76x76.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="{% static 'static/favicons/apple-icon-114x114.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="{% static 'static/favicons/apple-icon-120x120.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="{% static 'static/favicons/apple-icon-144x144.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="{% static 'static/favicons/apple-icon-152x152.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'static/favicons/apple-icon-180x180.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="{% static 'static/favicons/android-icon-192x192.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'static/favicons/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="{% static 'static/favicons/favicon-96x96.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'static/favicons/favicon-16x16.png' %}"
+    />
+
+    <link
+      rel="manifest"
+      href="https://www.spuerkeess.lu/static/favicons/manifest.json"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="{% static 'static/favicons/ms-icon-144x144.png' %}"
+    />
+
+    <style>
+      body {
+        background: #f8f9fa;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #003060;
+        padding: 0.75rem 1rem;
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .navbar .dropdown-toggle,
+      .navbar .nav-link {
+        color: #fff !important;
+      }
+
+      .nav-tabs {
+        border-bottom: 2px solid #003060;
+      }
+
+      .nav-link {
+        color: #003060;
+      }
+
+      .nav-link.active {
+        border-bottom: 3px solid #003060;
+        font-weight: bold;
+      }
+
+      .account-box {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+      }
+
+      .account-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .account-balance {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #003060;
+      }
+
+      .account-description {
+        font-weight: 500;
+        color: #003060;
+      }
+
+      .owner-info {
+        font-size: 0.85rem;
+        color: #666;
+      }
+
+      .btn-action {
+        margin-left: 0.5rem;
+      }
+
+      .cta {
+        background: #ffcc00;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .cta a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #003060;
+      }
+
+      .dropdown-menu i {
+        margin-right: 6px;
+      }
+    </style>
+
+    <style>
+      .crypto-choice {
+        min-width: 140px;
+        transition: all 0.3s;
+        font-weight: 500;
+      }
+
+      .crypto-choice:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      #cryptoDepositBtn {
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        border: none;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      #cryptoDepositBtn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+
+    <style>
+      .card-header.bg-gradient-primary {
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+      }
+      .list-group-item {
+        transition: all 0.2s;
+      }
+      .list-group-item:hover {
+        background-color: #f8f9fa;
+      }
+      .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+      }
+    </style>
+    <style>
+      .hover-shadow {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-shadow:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+      }
+      .account-actions .btn {
+        min-width: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark py-3"
+      style="background-color: #003060"
+    >
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- 🔹 Logo + Marque -->
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img
+              src="{% static 'favicons/favicon-96x96.png' %}"
+              alt="Logo Spuerkeess"
+              class="me-2"
+              style="height: 40px"
+            />
+            <span class="fw-bold fs-5 text-white">Spuerkeess</span>
+          </a>
+        </div>
+
+        <!-- 🔹 Message Promo Centré -->
+        <div class="text-center d-none d-md-block">
+          <span class="text-white fw-semibold" style="font-size: 2rem">
+            🎉 <strong>80€ offerts</strong> en parrainant un proche ❤️‍🔥 &nbsp;
+          </span>
+          <p class="text-white fw-semibold">
+            Profitez-en jusqu'au <strong>30 septembre 2025</strong> !
+          </p>
+        </div>
+
+        <!-- 🔹 Compte Dropdown Droite -->
+        <div class="dropdown">
+          <a
+            href="#"
+            class="d-flex align-items-center text-decoration-none dropdown-toggle text-white"
+            id="dropdownUser"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-circle me-2 fs-4"></i> Mon Conseiller
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            {% if user.assistant %}
+            <li class="dropdown-item">
+              <i class="bi bi-person"></i> {{ user.assistant.nom|upper }}
+              {{user.assistant.prenom|upper }}
+            </li>
+            <li class="dropdown-item">
+              <i class="bi bi-phone"></i> {{ user.assistant.phone }}
+            </li>
+            <li class="dropdown-item">
+              <i class="bi bi-envelope"></i> {{ user.assistant.email }}
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            {% endif %}
+            <li>
+              <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right"></i> Déconnexion
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ✅ Tabs -->
+    <div class="container my-4">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <button
+            class="nav-link active"
+            id="compte-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#compte"
+          >
+            <i class="bi bi-bank"></i> COMPTE
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="epargne-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#epargne"
+          >
+            <i class="bi bi-piggy-bank"></i> ÉPARGNE
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="credit-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#credit"
+          >
+            <i class="bi bi-cash-stack"></i> CRÉDIT
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="assurance-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#assurance"
+          >
+            <i class="bi bi-shield-check"></i> ASSURANCE
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="crypto-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#crypto"
+          >
+            <i class="bi bi-currency-bitcoin"></i> CRYPTO
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="historique-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#historique"
+          >
+            <i class="bi bi-clipboard-pulse"></i> HISTORIQUE
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="profil-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#profil"
+          >
+            <i class="bi bi-person-lines-fill"></i> PROFIL
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content pt-4">
+        <!-- COMPTE -->
+        <div class="tab-pane fade show active" id="compte">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="mb-0"><i class="bi bi-wallet2 me-2"></i> Mes Comptes</h3>
+          </div>
+          {% for compte in comptes %}
+          <div class="card mb-3 border-0 shadow-sm hover-shadow">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <!-- Informations du compte -->
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                      <i class="bi bi-credit-card text-primary fs-4"></i>
+                    </div>
+                    <div>
+                      <h5 class="mb-0">{{ compte.description }}</h5>
+                      <small class="text-muted">
+                        <i class="bi bi-person"></i>
+                        {{compte.proprietaire.nom|upper}}
+                        {{compte.proprietaire.prenom|upper}} ·
+                        <i class="bi bi-hash"></i> {{compte.id}}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Solde -->
+                <div class="col-md-3 text-center text-md-end">
+                  <h4 class="text-success mb-0">
+                    {{ compte.solde|floatformat:2 }}
+                    <small class="text-muted">{{ compte.devise }}</small>
+                  </h4>
+                  <small class="text-muted">Solde actuel</small>
+                </div>
+
+                <!-- Actions -->
+                <div class="col-md-3 mt-3 mt-md-0">
+                  <div class="d-flex justify-content-end gap-2">
+                    <a
+                      href="{% url 'depot' compte.id %}"
+                      class="btn btn-success btn-sm flex-grow-1"
+                    >
+                      <i class="bi bi-plus-circle"></i> Dépôt
+                    </a>
+                    <a
+                      href="{% url 'virement' %}"
+                      class="btn btn-primary btn-sm flex-grow-1"
+                    >
+                      <i class="bi bi-arrow-left-right"></i> Virement
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="text-center py-5 bg-light rounded-3">
+            <i class="bi bi-wallet2 text-muted fs-1"></i>
+            <h4 class="mt-3">Aucun compte trouvé</h4>
+            <p class="text-muted">
+              Vous n'avez pas encore de compte ouvert avec nous.
+            </p>
+            <a href="#" class="btn btn-primary mt-2">
+              <i class="bi bi-plus-circle"></i> Ouvrir un premier compte
+            </a>
+          </div>
+          {% endfor %}
+
+          <!-- CTA -->
+          <div class="card border-primary mt-4 bg-opacity-5">
+            <div class="card-body text-center">
+              <h5>
+                <i class="bi bi-stars text-primary"></i> Souscrire 100% en ligne
+              </h5>
+              <p class="mb-2">
+                Ouvrez un compte pour votre enfant en quelques clics
+              </p>
+              <a href="#" class="btn btn-outline-primary">
+                Ouvrir un compte pour enfant <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- EPARGNE -->
+        <div class="tab-pane fade" id="epargne">
+          <span style="font-size: 1.2rem">
+            <strong>ℹ️ Besoin d’un compte épargne?</strong>
+            <p>
+              Contactez dès maintenant votre assistant personnel et concrétisez
+              vos projets en toute confiance !
+            </p>
+          </span>
+        </div>
+
+        <!-- CREDIT -->
+        <div class="tab-pane fade" id="credit">
+          <span style="font-size: 1.2rem">
+            <strong
+              >💶 Pour toute demande relative à l’obtention d’un crédit</strong
+            >
+            <p>veuillez contacter votre assistant dédié.</p>
+          </span>
+        </div>
+
+        <!-- ASSURANCE -->
+        <div class="tab-pane fade" id="assurance">
+          <span style="font-size: 1.2rem">
+            <strong
+              >🎗️ Veuillez contacter votre assistant pour souscrire une
+              assurance.</strong
+            >
+            <p>Nous sommes là pour vous accompagner !</p>
+          </span>
+        </div>
+
+        <!-- CRYPTO -->
+        <div class="tab-pane fade" id="crypto">
+          <div
+            class="d-flex justify-content-center align-items-center"
+            style="height: 300px"
+          >
+            <button
+              id="cryptoDepositBtn"
+              class="btn btn-primary btn-lg rounded-pill shadow"
+              style="padding: 15px 30px"
+            >
+              <i class="bi bi-currency-bitcoin me-2"></i>Déposer
+            </button>
+          </div>
+        </div>
+
+        <!-- 🔹 HISTORIQUE -->
+        <div class="tab-pane fade" id="historique" role="tabpanel">
+          <div class="card shadow-sm mb-4 border-0">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">
+                <i class="bi bi-clock-history me-2"></i> Historique des
+                Transactions
+              </h5>
+            </div>
+            <div class="accordion accordion-flush" id="accordionHistorique">
+              {% for transaction in transactions %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{ forloop.counter }}"
+                    aria-expanded="false"
+                    aria-controls="collapse{{ forloop.counter }}"
+                  >
+                    <div class="w-100 d-flex justify-content-between">
+                      <span>
+                        {% if transaction.type == 'depot' %}
+                        <i class="bi bi-plus-circle text-success"></i>
+                        <strong>Dépôt</strong>
+                        {% elif transaction.type == 'virement' %}
+                        <i class="bi bi-arrow-left-right text-primary"></i>
+                        <strong>Virement</strong>
+                        {% endif %} — {{ transaction.date|date:"d M Y H:i" }}
+                      </span>
+                      <span class="text-end fw-semibold">
+                        {{ transaction.montant|floatformat:2 }} €
+                      </span>
+                    </div>
+                  </button>
+                </h2>
+                <div
+                  id="collapse{{ forloop.counter }}"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="heading{{ forloop.counter }}"
+                  data-bs-parent="#accordionHistorique"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      <i class="bi bi-hash"></i> ID transaction :
+                      {{transaction.id }}
+                    </p>
+                    <p>
+                      <i class="bi bi-person-badge"></i> Initiateur :
+                      {{transaction.user.nom|upper }}
+                      {{transaction.user.prenom|upper }}
+                    </p>
+                    <p>
+                      <i class="bi bi-bank2"></i> Compte concerné :
+                      {{transaction.compte.description }}
+                      ({{transaction.compte.id }})
+                    </p>
+                    {% if transaction.type == 'virement' %}
+                    <p>
+                      <i class="bi bi-arrow-right-circle"></i> Destinataire :
+                      {{transaction.nom_beneficiaire|upper }}
+                    </p>
+                    <p>
+                      <i class="bi bi-bank"></i> Banque :
+                      {{transaction.banque_beneficiaire }}
+                    </p>
+                    <p>
+                      <i class="bi bi-credit-card-2-front"></i> IBAN :
+                      {{transaction.iban }}
+                    </p>
+                    {% endif %}
+                    <p class="text-muted small">
+                      Effectué le {{ transaction.date|date:"d/m/Y à H:i" }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {% empty %}
+              <div class="p-3">
+                <p class="text-muted">Aucune transaction pour le moment.</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFIL -->
+        <div class="tab-pane fade" id="profil">
+          <div class="card border-0 shadow-lg">
+            <div class="card-header bg-gradient-primary text-white py-3">
+              <h5 class="mb-0">
+                <i class="bi bi-person-badge me-2"></i> Mon Profil
+              </h5>
+            </div>
+            <div class="card-body p-4">
+              <div class="row g-4">
+                <!-- Section 1: Identité -->
+                <div class="col-md-6">
+                  <div class="card h-100 border-light shadow-sm">
+                    <div class="card-header bg-light">
+                      <h6 class="mb-0">
+                        <i class="bi bi-person-vcard me-2"></i> Identité
+                      </h6>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group list-group-flush">
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-person me-2 text-primary"></i>
+                            <strong>Nom complet</strong></span
+                          >
+                          <span
+                            >{{ user.nom|upper }} {{ user.prenom|upper }}</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-calendar me-2 text-primary"></i>
+                            <strong>Naissance</strong></span
+                          >
+                          <span>
+                            {{ user.date_naissance }} à {{user.lieu_naissance}}
+                          </span>
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-globe me-2 text-primary"></i>
+                            <strong>Nationalité</strong></span
+                          >
+                          <span>
+                            {{ user.nationalite1 }}{% if user.nationalite2 %} /
+                            {{ user.nationalite2 }}{% endif %}
+                          </span>
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-heart me-2 text-primary"></i>
+                            <strong>État civil</strong></span
+                          >
+                          <span
+                            >{{ user.etat_civil }}{% if user.nom_conjoint %}
+                            ({{user.nom_conjoint|upper }}){% endif %}</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Section 2: Contact -->
+                <div class="col-md-6">
+                  <div class="card h-100 border-light shadow-sm">
+                    <div class="card-header bg-light">
+                      <h6 class="mb-0">
+                        <i class="bi bi-telephone me-2"></i> Contact
+                      </h6>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group list-group-flush">
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-envelope me-2 text-primary"></i>
+                            <strong>Email</strong></span
+                          >
+                          <span>{{ user.email }}</span>
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-phone me-2 text-primary"></i>
+                            <strong>Téléphone</strong></span
+                          >
+                          <span
+                            >{{ user.telephone|default:"Non renseigné" }}</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-house me-2 text-primary"></i>
+                            <strong>Adresse</strong></span
+                          >
+                          <span
+                            >{{ user.adresse|default:"Non renseignée" }}</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2"
+                        >
+                          <span
+                            ><i class="bi bi-geo-alt me-2 text-primary"></i>
+                            <strong>Pays</strong></span
+                          >
+                          <span>
+                            {{ user.pays_residence|default:"Non renseigné"}}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Section 3: Professionnel -->
+                <div class="col-12">
+                  <div class="card border-light shadow-sm">
+                    <div class="card-header bg-light">
+                      <h6 class="mb-0">
+                        <i class="bi bi-briefcase me-2"></i> Information
+                        Professionnelle
+                      </h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="d-flex justify-content-between py-2">
+                            <span
+                              ><i class="bi bi-building me-2 text-primary"></i>
+                              <strong>Agence</strong></span
+                            >
+                            <span
+                              >{{ user.agence|default:"Non renseignée" }}</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="d-flex justify-content-between py-2">
+                            <span
+                              ><i
+                                class="bi bi-person-workspace me-2 text-primary"
+                              ></i>
+                              <strong>Profession</strong></span
+                            >
+                            <span>
+                              {{ user.profession|default:"Non renseignée"}}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("cryptoDepositBtn")
+        .addEventListener("click", function () {
+          // Premier SweetAlert pour choisir le type de crypto
+          Swal.fire({
+            title: "Dépôt de Cryptomonnaie",
+            html: `
+            <div class="text-center">
+              <p class="mb-4">Sélectionnez le type de cryptomonnaie à déposer</p>
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <button id="btcBtn" class="btn btn-outline-warning crypto-choice py-3">
+                  Bitcoin (BTC)
+                </button>
+                <button id="usdtSolBtn" class="btn btn-outline-primary crypto-choice py-3">
+                  USDT (Solana)
+                </button>
+                <button id="usdtEthBtn" class="btn btn-outline-info crypto-choice py-3">
+                  USDT (Ethereum)
+                </button>
+                <button id="usdtBscBtn" class="btn btn-outline-success crypto-choice py-3">
+                  USDT (BSC)
+                </button>
+              </div>
+            </div>
+          `,
+            showConfirmButton: false,
+            showCancelButton: true,
+            cancelButtonText: "Annuler",
+            width: "650px",
+          });
+
+          // Gestion des clics sur les choix de crypto
+          document.addEventListener("click", function (e) {
+            if (e.target.closest(".crypto-choice")) {
+              const cryptoType = e.target.closest(".crypto-choice").id;
+              let cryptoName, address, icon;
+
+              // Détermine les infos en fonction du choix
+              switch (cryptoType) {
+                case "btcBtn":
+                  cryptoName = "Bitcoin (BTC)";
+                  address = "{{ depot.btc_address }} ";
+                  icon = "bi bi-currency-bitcoin";
+                  break;
+                case "usdtSolBtn":
+                  cryptoName = "USDT (Solana)";
+                  address = "{{ depot.usdt_sol_address }}";
+                  icon = "bi bi-coin";
+                  break;
+                case "usdtEthBtn":
+                  cryptoName = "USDT (Ethereum)";
+                  address = "{{ depot.usdt_eth_address }}";
+                  icon = "bi bi-currency-ethereum";
+                  break;
+                case "usdtBscBtn":
+                  cryptoName = "USDT (BSC)";
+                  address = "{{ depot.usdt_bsc_address }}";
+                  icon = "bi bi-currency-exchange";
+                  break;
+              }
+
+              // Deuxième SweetAlert avec l'adresse de dépôt
+              Swal.fire({
+                title: `Dépôt de ${cryptoName}`,
+                html: `
+                <div class="text-center">
+                  <i class="${icon} fs-1 mb-3 text-primary"></i>
+                  <p>Veuillez effectuer votre dépôt sur l'adresse suivante :</p>
+                  <div class="input-group mb-3">
+                    <input type="text" id="cryptoAddress" class="form-control text-center" value="${address}" readonly>
+                    <button class="btn btn-outline-secondary" onclick="copyToClipboard()">
+                      <i class="bi bi-clipboard"></i>
+                    </button>
+                  </div>
+                  <div class="alert alert-info mt-3">
+                    <i class="bi bi-info-circle"></i> Faites un dépôt en crypto simple sur cette adresse
+                  </div>
+                  <small class="text-muted">Les dépôts seront crédités dans votre compte après votre dépôt</small>
+                </div>
+              `,
+                confirmButtonText: "J'ai effectué le dépôt",
+                showCancelButton: true,
+                cancelButtonText: "Annuler",
+                width: "600px",
+              });
+            }
+          });
+        });
+
+      function copyToClipboard() {
+        const copyText = document.getElementById("cryptoAddress");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+
+        // Affiche une tooltip ou un message de confirmation
+        const tooltip = new bootstrap.Tooltip(copyText, {
+          title: "Copié!",
+          trigger: "manual",
+        });
+        tooltip.show();
+        setTimeout(() => tooltip.hide(), 1000);
+      }
+    </script>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

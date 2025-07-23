@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dépôt de fonds</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'sweetalert2/dist/sweetalert2.min.css' %}"
+    />
+    <script src="{% static 'sweetalert2/dist/sweetalert2.min.js' %}"></script>
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="{% static 'static/favicons/favicon-96x96.png' %}"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="{% static 'static/favicons/ms-icon-144x144.png' %}"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <style>
+      body {
+        background: #f8f9fa;
+      }
+      .navbar {
+        background-color: #003060;
+      }
+      .navbar-brand {
+        color: #fff !important;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      .navbar-brand img {
+        height: 40px;
+        margin-right: 10px;
+      }
+      .promo-text {
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        width: 100%;
+      }
+      .rib-box {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 2rem;
+        max-width: 700px;
+        margin: 2rem auto;
+        border-radius: 8px;
+      }
+      .rib-box h4 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+        color: #003060;
+      }
+      .rib-item {
+        margin-bottom: 1rem;
+      }
+      .amount-input {
+        font-size: 1.5rem;
+        border: 2px solid #003060;
+      }
+      .btn-deposer {
+        background: #003060;
+        color: #fff;
+        border: none;
+      }
+      .btn-deposer:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand text-white" href="{% url 'Mon_compte' %}">
+          <img
+            src="{% static 'favicons/favicon-96x96.png' %}"
+            alt="Logo Spuerkeess"
+          />
+          Spuerkeess
+        </a>
+        <div class="text-center d-none d-md-block">
+          <span class="text-white fw-semibold" style="font-size: 2rem">
+            🎉 <strong>80€ offerts</strong> en parrainant un proche ❤️‍🔥 &nbsp;
+          </span>
+          <p class="text-white fw-semibold">
+            Profitez-en jusqu'au <strong>30 septembre 2025</strong> !
+          </p>
+        </div>
+        <div></div>
+        <!-- Espace à droite pour équilibrer -->
+      </div>
+    </nav>
+    <!-- 🔹 Formulaire Dépôt -->
+    <div class="rib-box">
+      <div class="mb-3 text-start">
+        <label class="form-label d-flex align-items-center">
+          <img
+            src="{% static 'favicons/favicon-96x96.png' %}"
+            alt="Logo Spuerkeess"
+            style="height: 48px; margin-right: 10px"
+          />
+          <strong>Spuerkeess</strong>
+        </label>
+        <h4>Relevé d'identité bancaire</h4>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+          <div class="col-md-6 rib-item">
+            <label><strong>Nom</strong></label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ user.nom|upper }}"
+              readonly
+            />
+          </div>
+          <div class="col-md-6 rib-item">
+            <label><strong>Adresse</strong></label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ user.adresse }}"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 rib-item">
+            <label><strong>Banque</strong></label>
+            <input
+              type="text"
+              name="banque"
+              class="form-control"
+              value="{{ depot.banque }}"
+              readonly
+            />
+          </div>
+          <div class="col-md-3 rib-item">
+            <label><strong>Guichet</strong></label>
+            <input
+              type="text"
+              name="guichet"
+              class="form-control"
+              value="{{ depot.guichet }}"
+              readonly
+            />
+          </div>
+          <div class="col-md-3 rib-item">
+            <label><strong>Clé RIB</strong></label>
+            <input
+              type="text"
+              name="rib"
+              class="form-control"
+              value="{{ depot.rib }}"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="rib-item">
+          <label><strong>IBAN</strong></label>
+          <input
+            type="text"
+            name="iban"
+            class="form-control"
+            value="{{ depot.iban }}"
+            readonly
+          />
+        </div>
+
+        <div class="rib-item">
+          <label><strong>BIC</strong></label>
+          <input
+            type="text"
+            name="bic"
+            class="form-control"
+            value="{{ depot.bic }}"
+            readonly
+          />
+        </div>
+
+        <div class="rib-item">
+          <label><strong>Domiciliation</strong></label>
+          <textarea name="domiciliation" rows="2" class="form-control" readonly>
+            {{ depot.domiciliation }}
+      </textarea
+          >
+        </div>
+
+        <div class="rib-item">
+          <label><strong>Montant à déposer (€)</strong></label>
+          <input
+            type="number"
+            step="0.01"
+            name="montant"
+            class="form-control amount-input"
+            placeholder="0,00 €"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="btn-deposer"
+          class="btn btn-deposer w-100 mt-3"
+        >
+          💶 Déposer
+        </button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document
+        .getElementById("btn-deposer")
+        .addEventListener("click", function (e) {
+          // Empêche le comportement par défaut du formulaire
+          e.preventDefault();
+
+          const montant = document.querySelector('input[name="montant"]').value;
+          const form = this.closest("form");
+
+          if (!montant || parseFloat(montant) <= 0) {
+            Swal.fire({
+              icon: "error",
+              title: "Montant invalide",
+              text: "Veuillez saisir un montant valide supérieur à 0.",
+            });
+            return;
+          }
+
+          Swal.fire({
+            title: "Validation du dépôt",
+            html: `Veuillez faire un virement de <strong>${montant} €</strong> d'un compte externe vers ces informations bancaires.`,
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#003060",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "J'ai effectué le virement",
+            cancelButtonText: "Annuler",
+            footer: '<a href="#">Besoin d\'aide pour le virement ?</a>',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Soumission du formulaire seulement si OK est cliqué
+              form.submit();
+
+              // Optionnel : Message de confirmation supplémentaire
+              Swal.fire({
+                title: "Demande enregistrée !",
+                text: "Votre dépôt est en cours de traitement.",
+                icon: "success",
+                timer: 3000,
+                showConfirmButton: false,
+              });
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

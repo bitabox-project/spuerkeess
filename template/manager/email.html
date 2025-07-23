@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue chez Spuerkeess</title>
+    <style type="text/css">
+        /* Base Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f5f5f5;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+        
+        .header {
+            background-color: #003366;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #003366;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #d40000;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666666;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            border-top: 1px solid #eeeeee;
+            padding-top: 20px;
+        }
+        
+        .highlight-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #003366;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- En-tête -->
+        <div class="header">
+            <img src="{% static 'favicons/favicon-96x96.png' %}" alt="Spuerkeess" class="logo">
+        </div>
+        
+        <!-- Contenu principal -->
+        <div class="content">
+            <h1>Bienvenue chez Spuerkeess</h1>
+            
+            <p>Bonjour Cher(e) {{ user.nom|upper }} {{ user.prenom|upper }},</p>
+            
+            <p>Nous vous remercions pour l’intérêt que vous portez à spuerkeess.co et pour la confiance que vous nous accordez en sollicitant l’ouverture d’un compte auprès de notre établissement.
+
+                Nous vous confirmons que votre demande d’inscription a bien été prise en compte.
+                Notre équipe procède actuellement à l’analyse de votre dossier.
+                
+                Vous recevrez une réponse sous un délai maximum de 72 heures, vous informant de la suite donnée à votre demande.</p>
+       
+            
+            <p>
+                <ul>
+                    <li>Si votre inscription est acceptée, vous recevrez par email vos identifiants de connexion vous permettant d’accéder à votre espace personnel en toute sécurité.</li>
+              <li>Si votre inscription ne peut être validée, nous vous tiendrons également informé par retour de mail.</li>
+              </ul>
+            </p>
+
+              <p>Nous restons à votre disposition pour tout complément d’information : support@spuerkeess.co
+                Merci de votre confiance.</p>
+
+                <div class="signature">
+                <p>Cordialement,</p>
+                <p><strong>L’équipe spuerkeess.co</strong><br>
+                Banque et Caisse d'Épargne de l'État</p>
+            </div>
+        </div>
+        
+        <!-- Pied de page -->
+        <div class="footer">
+            <p>© 2025 Spuerkeess. Tous droits réservés.</p>
+            <p>
+                <a href="https://www.spuerkeess.co" style="color: #003366;">Visitez notre site web</a> | 
+            </p>
+            <p style="font-size: 11px; color: #999999;">
+                Ce message vous est envoyé automatiquement, merci de ne pas y répondre.<br>
+                Pour votre sécurité, ne communiquez jamais vos identifiants par email.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
