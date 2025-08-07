@@ -1,0 +1,6 @@
+django
+decouple
+dj_database_url
+pillow
+psycopg2
+gunicorn

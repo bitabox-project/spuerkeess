@@ -3,9 +3,6 @@ import string
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from django.core import mail
-from socket import error as socket_error
-from django.contrib.auth import update_session_auth_hash
 from .forms import UserRegisterForm, UserLoginForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseForbidden
@@ -13,8 +10,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth import logout as auth_logout
-from django.db import IntegrityError, transaction
-from django.core.files.storage import default_storage
+
 
 
 User = get_user_model()
