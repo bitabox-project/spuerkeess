@@ -1,6 +1,7 @@
 django
-decouple
+python-decouple
 dj_database_url
 pillow
 psycopg2
 gunicorn
+celery
