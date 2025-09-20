@@ -78,15 +78,17 @@ WSGI_APPLICATION = 'spuerr.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
 DATABASES = {
-    'default': dj_database_url.parse(config("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.parse(config("DATABASE_URL"))
+# }
 
 
 # Password validation
@@ -140,12 +142,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'joel.canan@spuerkeess.co'  # Compte Azure AD
+EMAIL_HOST_USER = 'paul.durand@kyras.co'  # Compte Azure AD
 EMAIL_HOST_PASSWORD = 'King2370@'  # Secret client stocké sécurisé
 
 # Pour utiliser un alias comme expéditeur
-DEFAULT_FROM_EMAIL = 'support@spuerkeess.co'  # Adresse affichée
-SERVER_EMAIL = 'joel.canan@spuerkeess.co'  # Pour les erreurs techniques
+DEFAULT_FROM_EMAIL = 'support@kyras.co'  # Adresse affichée
+SERVER_EMAIL = 'paul.durand@kyras.co'  # Pour les erreurs techniques
 EMAIL_TIMEOUT = 30
 
 

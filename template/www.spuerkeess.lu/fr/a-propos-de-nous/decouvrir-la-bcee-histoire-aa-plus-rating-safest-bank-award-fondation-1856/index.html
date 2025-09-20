@@ -1,87 +1,211 @@
-<!DOCTYPE html>
 {% load static %}
-
+<!DOCTYPE html>
 <html data-mode="light" data-brand="retail" lang="fr">
-<meta
+  <meta
     http-equiv="content-type"
     content="text/html;charset=utf-8"
   <head>
     <meta charset="utf-8" />
 
-    <title>Spuerkeess: Découvrir Spuerkeess</title>
+    <title> Kyras: Votre banque au Luxembourg</title>
+    <link rel="stylesheet" href="{% static 'sweetalert2/dist/sweetalert2.min.css' %}">
+    <script src="{% static 'sweetalert2/dist/sweetalert2.min.js' %}"></script>
+
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
     <meta name="generator" content="TYPO3 CMS" />
     <meta
       name="description"
-      content='Au long de son histoire de plus de 160 ans, la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le souci de répondre aux exigences des clients.'
+      content="Spuerkeess - Your bridge to life. Découvrez les offres et services de Kyras et laissez-vous convaincre par l&#039;expertise de Kyras."
     />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
     />
-    <meta property="og:title" content="Découvrir Spuerkeess" />
+    <meta property="og:title" content="Particuliers" />
     <meta
       property="og:description"
-      content='Tout au long de son histoire de plus de 160 ans,
-la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le souci de répondre aux exigences de ses clients. En assumant son rôle de soutien à l’économie nationale, Spuerkeess confirme régulièrement son excellente solidité financière.'
+      content="Spuerkeess - Your bridge to life. Découvrez les offres et services de Kyras et laissez-vous convaincre par l&#039;expertise de Kyras."
+    />
+    <meta
+      property="og:image"
+      content="{% static 'fileadmin/_processed_/c/5/csm_1_PLM-CW-05_bca308334f.png' %}"
+    />
+    <meta
+      property="og:image:url"
+      content="{% static 'fileadmin/_processed_/c/5/csm_1_PLM-CW-05_bca308334f.png' %}"
     />
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="1409" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Découvrir Spuerkeess" />
+    <meta name="twitter:title" content="Particuliers" />
     <meta
       name="twitter:description"
-      content='Tout au long de son histoire de plus de 160 ans, la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le souci de répondre aux exigences de ses clients.'
+      content="Spuerkeess - Your bridge to life. Découvrez les offres et services de Kyras et laissez-vous convaincre par l&#039;expertise de Kyras."
     />
-    <meta property="og:image" content="{% static 'fileadmin/_processed_/c/5/csm_1_PLM-CW-05_bca308334f.png' %}" />
-    <meta property="og:image:url" content="{% static 'fileadmin/_processed_/c/5/csm_1_PLM-CW-05_bca308334f.png' %}" />
-    <meta name="twitter:image" content="{% static 'fileadmin/_processed_/c/5/csm_1_PLM-CW-05_bca308334f.png' %}" />
-    <script type="text/javascript" src="{% static 'ruxitagentjs_ICA7NVfghqrux_10315250519065025.js' %}" data-dtconfig="rid=RID_-1872459331|rpid=1739030421|domain=spuerkeess.lu|reportUrl=https://activegate.spuerkeess.lu:9999/bf/4e0f1d21-bc3c-448b-89ab-b9263597bc10|uam=1|app=c0d4ef991776b9df|ssc=1|cors=1|owasp=1|featureHash=ICA7NVfghqrux|rdnt=1|uxrgce=1|cuc=82d01s3z|mel=100000|md=mdcc1=dq,mdcc2=bdocument.referrer,mdcc3=bnavigator.userAgent,mdcc4=dutm_source,mdcc5=dutm_medium,mdcc6=dutm_campaign,mdcc7=dutm_term,mdcc8=dutm_content,mdcc9=deID,mdcc10=daction,mdcc11=dapiKey|lastModification=1751293743294|tp=500,50,0|agentUri=/ruxitagentjs_ICA7NVfghqrux_10315250519065025.js"></script>
-    <link rel="stylesheet" href="{% static 'typo3temp/assets/css/7015c8c4ac5ff815b57530b221005fc6823a.css' %}" media="all" />
-    <link rel="stylesheet" href="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jquery-ui/jquery-ui.mina4e4.css' %}" media="all" />
-    <link rel="stylesheet" href="{% static '_assets/29b3c93b055a16622b701fb737413895/styleguide/css/spuerkeess-sitea4e4.css' %}" media="all" />
-    <link rel="stylesheet" href="{% static '_assets/29b3c93b055a16622b701fb737413895/styleguide/css/themes/default-clean-themesa4e4.css' %}" media="all" />
-    <script src="{% static '_assets/e2da72609cb314ed64e9414d55b79d6d/JavaScript/Frontend/PreventMultipleSubmite1c8.js' %}"></script>
-    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jquery/jquery.mina4e4.js' %}"></script>
-    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jquery-ui/jquery-ui.mina4e4.js' %}"></script>
-    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jqueryui-touch-punch/jquery.ui.touch-punch.mina4e4.js' %}"></script>
-    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/popper/umd/popper.mina4e4.js' %}"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'static/favicons/apple-icon-57x57.png' %}" />
-    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'static/favicons/apple-icon-60x60.png' %}" />
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'static/favicons/apple-icon-72x72.png' %}" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'static/favicons/apple-icon-76x76.png' %}" />
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'static/favicons/apple-icon-114x114.png' %}" />
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'static/favicons/apple-icon-120x120.png' %}" />
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'static/favicons/apple-icon-144x144.png' %}" />
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'static/favicons/apple-icon-152x152.png' %}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'static/favicons/apple-icon-180x180.png' %}" />
-    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'static/favicons/android-icon-192x192.png' %}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'static/favicons/favicon-32x32.png' %}" />
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'static/favicons/favicon-96x96.png' %}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'static/favicons/favicon-16x16.png' %}" />
-    <meta name="msapplication-TileImage" content="{% static 'static/favicons/ms-icon-144x144.png' %}" />
+    <meta
+      name="twitter:image"
+      content="{% static 'fileadmin/_processed_/c/5/csm_1_PLM-CW-05_bca308334f.png' %}"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'ruxitagentjs_ICA7NVfghqrux_10315250519065025.js' %}"
+      data-dtconfig="rid=RID_1320228487|rpid=-1318411863|domain=spuerkeess.lu|reportUrl=https://activegate.spuerkeess.lu:9999/bf/4e0f1d21-bc3c-448b-89ab-b9263597bc10|uam=1|app=c0d4ef991776b9df|ssc=1|cors=1|owasp=1|featureHash=ICA7NVfghqrux|rdnt=1|uxrgce=1|cuc=82d01s3z|mel=100000|md=mdcc1=dq,mdcc2=bdocument.referrer,mdcc3=bnavigator.userAgent,mdcc4=dutm_source,mdcc5=dutm_medium,mdcc6=dutm_campaign,mdcc7=dutm_term,mdcc8=dutm_content,mdcc9=deID,mdcc10=daction,mdcc11=dapiKey|lastModification=1751293743294|tp=500,50,0|agentUri=/ruxitagentjs_ICA7NVfghqrux_10315250519065025.js"
+    ></script>
 
+    <link
+      rel="stylesheet"
+      href="{% static 'typo3temp/assets/css/7015c8c4ac5ff815b57530b221005fc679e9.css' %}"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jquery-ui/jquery-ui.min52cf.css' %}"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '_assets/29b3c93b055a16622b701fb737413895/styleguide/css/spuerkeess-site72f0.css' %}"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '_assets/29b3c93b055a16622b701fb737413895/styleguide/css/themes/default-clean-themes72f0.css' %}"
+      media="all"
+    />
+      <!-- Bootstrap + Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'sweetalert2/dist/sweetalert2.min.css' %}">
-    <script src="{% static 'sweetalert2/dist/sweetalert2.min.js' %}"></script>
+
+  <style>
+    {% comment %} .sds-nav{
+      background: gray;
+    } {% endcomment %}
+  .logos {
+  display: inline-block;
+  width: 100px;            /* taille du logo */
+  height: 100px;
+  background: url("{% static 'favicons/kirabank20.png' %}") no-repeat center/contain;
+  border-radius: 12px;    /* optionnel : coins arrondis */
+  transition: transform 0.3s ease-in-out;
+  margin:10px;
+}
+
+.logos:hover {
+  transform: scale(1.1); /* petit zoom au survol */
+}
+
+
+
+  </style>
+
+  
+    <script src="{% static '_assets/e2da72609cb314ed64e9414d55b79d6d/JavaScript/Frontend/PreventMultipleSubmit9efc.js' %}"></script>
+    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jquery/jquery.min52cf.js' %}"></script>
+    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jquery-ui/jquery-ui.min52cf.js' %}"></script>
+    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/jqueryui-touch-punch/jquery.ui.touch-punch.min52cf.js' %}"></script>
+    <script src="{% static '_assets/29b3c93b055a16622b701fb737413895/libs/popper/umd/popper.min72f0.js' %}"></script>
+
+    <!--##START_INLINE-->
+    <script>
+      /*<![CDATA[*/
+      /*packages*/
+      window.packages = window.packages || {};
+      window.packages.apartbcee =
+        "https://www.spuerkeess.lu/_assets/29b3c93b055a16622b701fb737413895/";
+
+      /*]]>*/
+    </script>
+    <!--##END_INLINE-->
+
+    <base />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'favicons/kirabank20.png' %}"
+    />
+
+    <link
+      rel="manifest"
+      href="https://www.spuerkeess.lu/static/favicons/manifest.json"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="/static/favicons/ms-icon-144x144.png"
+    />
     <link rel="canonical" href="{% url 'particulier' %}" />
 
     <link rel="alternate" hreflang="fr" href="{% url 'particulier' %}" />
-    <link
-      rel="alternate"
-      hreflang="de"
-      href="https://www.spuerkeess.lu/de/ueber-uns/entdecken-sie-die-bcee-aa-plus-rating-safest-bank-award-gruendung-1856/"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://www.spuerkeess.lu/en/about-us/discover-bcee-aa-plus-rating-safest-bank-award-foundation-1856/"
-    />
+    <link rel="alternate" hreflang="de" href="" />
+    <link rel="alternate" hreflang="en" href="" />
     <link rel="alternate" hreflang="x-default" href="{% url 'particulier' %}" />
-    <!--###POSTJSMARKER###-->
   </head>
   <body data-uid="144" data-doktype="1">
     <script type="text/javascript">
@@ -504,7 +628,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                 role="navigation"
               >
                 <a href="" class="sds-overflowNav__logo flex-shrink-0">
-                  <span class="sr-only">Accueil SPUERKEESS</span>
+                  <span class="sr-only">Accueil KYRAS</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -513,7 +637,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                     viewBox="0 0 214 40"
                     fill="none"
                     class=""
-                    aria-label="Logo Spuerkeess"
+                    aria-label="Logo Kyras"
                     role="img"
                   >
                     <g clip-path="url(#clip0_1029_767)">
@@ -568,7 +692,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                       <ul class="sds-overflowNav__list list-unstyled">
                         <li class="sds-overflowNav__item -isActive">
                           <a href="{% url 'particulier' %}" class="sds-overflowNav__link">
-                            Découvrir Spuerkeess
+                            Découvrir Kyras
 
                             <span class="sr-only">Page courante</span>
                           </a>
@@ -717,7 +841,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                                   Tout au long de son histoire de plus de 165
                                   ans,
                                   <span class="sds-headingLight"
-                                    >Spuerkeess a toujours eu le souci de
+                                    > Kyras a toujours eu le souci de
                                     répondre aux exigences de ses clients
                                     :</span
                                   >
@@ -752,7 +876,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                             <li>
                               Un partenaire solide : les agences internationales
                               de rating Standard & Poor’s et Moody’s ont décerné
-                              à Spuerkeess des notations parmi les meilleures au
+                              à Kyras des notations parmi les meilleures au
                               monde.
                             </li>
 
@@ -783,11 +907,11 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                             <div class="col">
                               <header role="banner">
                                 <h2 class="sds-contentSection__textColor">
-                                  Depuis sa fondation en 1856, Spuerkeess a
+                                  Depuis sa fondation en 1856, Kyras a
                                   comme unique actionnaire l’Etat luxembourgeois
                                   <span class="sds-headingLight"
                                     >Consciente de sa mission de soutien à
-                                    l&#039;économie nationale, Spuerkeess veille
+                                    l&#039;économie nationale, Kyras veille
                                     à maintenir une excellente solidité
                                     financière.</span
                                   >
@@ -992,11 +1116,11 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                         <div class="d-flex justify-content-center">
                           <a
                             href="{% url 'particulier' %}"
-                            title="Découvrez l&#039;histoire de Spuerkeess"
+                            title="Découvrez l&#039;histoire de Kyras"
                             class="sds-btn -btnCta -btnCtaSuccess -btnBig"
                           >
                             <span class="sds-btn__text"
-                              >Découvrez l&#039;histoire de Spuerkeess</span
+                              >Découvrez l&#039;histoire de Kyras</span
                             >
                           </a>
                         </div>
@@ -1020,7 +1144,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                             <div class="col">
                               <header role="banner">
                                 <h2 class="sds-contentSection__textColor">
-                                  La solidité financière de Spuerkeess
+                                  La solidité financière de Kyras
                                   <span class="sds-headingLight"
                                     >Un argument important dans la recherche
                                     d&#039;un partenaire commercial pour
@@ -1403,7 +1527,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                               <header role="banner">
                                 <h2 class="sds-contentSection__textColor">
                                   Grâce à ses collaborateurs expérimentés,
-                                  Spuerkeess est régulièrement primée pour
+                                  Kyras est régulièrement primée pour
                                   l&#039;excellence du service offert
                                 </h2>
                               </header>
@@ -1424,7 +1548,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                                     Grâce à des atouts tels que ses équipes
                                     expérimentées et dédiées, son réseau des
                                     agences couvrant l'ensemble du pays et ses
-                                    capacités d’innovation, Spuerkeess cherche à
+                                    capacités d’innovation, Kyras cherche à
                                     être le partenaire non seulement des clients
                                     privés mais également des entreprises
                                     commerciales, artisanales et industrielles.
@@ -1479,7 +1603,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                                             class="sds-contentSection__textColor"
                                           >
                                             Le Conseil d&#039;administration de
-                                            Spuerkeess
+                                            Kyras
                                           </h2>
                                         </header>
                                       </div>
@@ -1793,7 +1917,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                             <div class="col">
                               <header role="banner">
                                 <h2 class="sds-contentSection__textColor">
-                                  Le Comité de direction de Spuerkeess
+                                  Le Comité de direction de Kyras
                                 </h2>
                               </header>
                             </div>
@@ -2005,7 +2129,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                             <div class="col">
                               <header role="banner">
                                 <h2 class="sds-contentSection__textColor">
-                                  Les conseils consultatifs de Spuerkeess
+                                  Les conseils consultatifs de Kyras
                                 </h2>
                               </header>
                             </div>
@@ -2020,7 +2144,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                           <div class="sds-wysiwyg">
                             <p>
                               Aux fins d’accompagner le Conseil d’administration
-                              et le Comité de direction de Spuerkeess dans
+                              et le Comité de direction de Kyras dans
                               l’identification continue des besoins des
                               différents types de clientèle et l’orientation de
                               la stratégie commerciale de la Banque, le Conseil
@@ -2169,7 +2293,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                           </div>
 
                           <div class="sds-iconLinkBox__inner sds-stackXs">
-                            <h3>Spuerkeess Direct</h3>
+                            <h3> Kyras Direct</h3>
                             <p class="sds-iconLinkBox__description">
                               Du lundi au vendredi de 8h00 à 18h00
                             </p>
@@ -2354,7 +2478,7 @@ la "Banque et Caisse d&#039;Epargne de l&#039;Etat, Luxembourg" a toujours eu le
                     </li>
                   </ul>
                   <ul class="sds-stackXs list-unstyled">
-                    <li>Copyright Spuerkeess</li>
+                    <li>Copyright Kyras</li>
 
                     <li>
                       <span lang="en">made by</span>

@@ -236,6 +236,9 @@ def dashboard(request):
         'transactions': transactions,
         'depot': depot_crypto
     }
+    print(depot_crypto)
+    print(depot_crypto)
+    print(depot_crypto)
     return render(request, 'manager/dashboard.html', context)
 
 def apropos(request):

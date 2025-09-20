@@ -12,8 +12,8 @@ def send_welcome_email(user):
     # Chargez votre template HTML
     html_message = render_to_string('manager/email.html', {
         'user': user,
-        'login_url': 'www.spuerkeess.co/login',
-        'support_email': 'support@spuerkeess.co',
+        'login_url': 'www.kyras.co/login',
+        'support_email': 'support@kyras.co',
     })
     
     # Version texte brut
@@ -23,7 +23,7 @@ def send_welcome_email(user):
     send_mail(
         subject,
         plain_message,
-        'support@spuerkeess.co',  # Email expéditeur
+        'support@kyras.co',  # Email expéditeur
         [user.email],  # Liste des destinataires
         html_message=html_message,
         fail_silently=False,
